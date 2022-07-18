@@ -7,7 +7,7 @@ ____
 #### Download the script and run it with the following parameters:
 - `-csvoutput` -> Path for the csv file that will be generated (example: c:\temp\w365ips.csv)
 - `-compare` -> If you would like to compare the output against previous results.
-- `-previousFile` --> File to compare against. This parameter will show up if you select the `compare` parameter.
+- `-previousFile` --> File to compare against. This parameter will show up if you selected the `compare` parameter.
 
 **_Examples:_**
 

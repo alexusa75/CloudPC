@@ -107,7 +107,7 @@ process{
 
 }
 end{
-    #clear
+    clear
     Write-Host "`nYou can find the csv file with all IPs information at:" -ForegroundColor Green -NoNewline
     Write-Host " $csvoutput" -ForegroundColor Yellow
 
