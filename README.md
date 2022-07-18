@@ -9,7 +9,7 @@ ____
 - `-compare` -> If you would like to compare the output against previous results.
 - `-previousFile` --> File to compare against. This parameter will show up if you select the `compare` parameter.
 
-_Examples:_
+**_Examples:_**
 
 ```powershell
 # Just to export the csv file with all IPs addresses
