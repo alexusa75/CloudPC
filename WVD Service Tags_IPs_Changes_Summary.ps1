@@ -102,12 +102,12 @@ process{
             }
         }
     }
-    $diff | Export-Csv -Path $compareoutput -NoTypeInformation
+
     #EndRegion
 
 }
 end{
-    clear
+    #clear
     Write-Host "`nYou can find the csv file with all IPs information at:" -ForegroundColor Green -NoNewline
     Write-Host " $csvoutput" -ForegroundColor Yellow
 
@@ -118,6 +118,7 @@ end{
 
     If($compp){
         $compareoutput = $csvoutput -replace '(.*\\)(.*)','$1compare.csv'
+        $diff | Export-Csv -Path $compareoutput -NoTypeInformation
         Write-Host "`nYou can find the comparation results at:" -ForegroundColor Green -NoNewline
         Write-Host " $compareoutput" -ForegroundColor Yellow
     }else {
