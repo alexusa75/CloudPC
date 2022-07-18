@@ -21,7 +21,10 @@ _Examples:_
 ```
 
 ____
-The script will generate one or three files depending on if you do a comparison or not:
+The script will download a json file from the Microsoft Download Center:
+https://www.microsoft.com/en-us/download/details.aspx?id=56519
+
+After the script is finished, it will generate one or three files depending on if you make a comparison or not:
 - csv file with all IP addresses
 - csv file with the comparison results
 - txt file with a summary of IP per region
