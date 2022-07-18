@@ -1,4 +1,3 @@
-# CloudPC
 # **Windows 365 RDP Gateways IP Addresses**
 ## Purpose
 #### This script will help you to retrieve all Windows 365 RDP Gateway IPs from the Azure Service Tag Windows Virtual Desktop, additionally, you can compare the output against a file with previous output information and you will find added or/and removed IPs.
