@@ -38,7 +38,7 @@ begin{
     $wvdcsvtemp = $wvdcsv = $summary = $summarytemp = New-Object system.collections.arraylist
     #$csvoutput = "c:\temp\wvd.csv"
     $previousFilepath = $PSBoundParameters['previousFile']
-    $compp = $True
+    $compp = $False
 }
 process{
     #Region CSV all IPs
@@ -107,7 +107,7 @@ process{
 
 }
 end{
-    clear
+    #clear
     Write-Host "`nYou can find the csv file with all IPs information at:" -ForegroundColor Green -NoNewline
     Write-Host " $csvoutput" -ForegroundColor Yellow
 
@@ -119,6 +119,7 @@ end{
 
     If($compp){
         $compareoutput = $csvoutput -replace '(.*\\)(.*)','$1compare.csv'
+        Write-Host $compp -ForegroundColor Yellow
         $diff | Export-Csv -Path $compareoutput -NoTypeInformation
         Write-Host "`nYou can find the comparation results at:" -ForegroundColor Green -NoNewline
         Write-Host " $compareoutput" -ForegroundColor Yellow
