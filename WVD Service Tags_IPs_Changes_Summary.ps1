@@ -114,7 +114,8 @@ end{
     $summaryoutput = $csvoutput -replace '(.*\\)(.*)','$1Summary.txt'
     Write-Host "`nYou can find the Summary results at:" -ForegroundColor Green -NoNewline
     Write-Host " $summaryoutput" -ForegroundColor Yellow
-    $wvdsumm | out-file "$($csvoutput)\Summary.txt"
+    $wvdsummoutput = $csvoutput -replace '(.*\\)(.*)','$1Summary.txt'
+    $wvdsumm | out-file $wvdsummoutput
 
     If($compp){
         $compareoutput = $csvoutput -replace '(.*\\)(.*)','$1compare.csv'
