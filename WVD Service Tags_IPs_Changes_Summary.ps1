@@ -33,10 +33,14 @@ DynamicParam {
 # endregion Parameters
 
 begin{
-    $wvd = Invoke-WebRequest -Uri "https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_20220711.json" | ConvertFrom-Json
+    #Find the correct URI
+    $webrequest = Invoke-WebRequest -Uri "https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519"
+    $allcontext = $webrequest.Content
+    $Regex = 'https:\/\/download\.microsoft\.com\/download\/7\/1\/D\/.{36}\/ServiceTags_Public_\d.{8}json'
+    $uri = (Select-String -InputObject $allcontext -Pattern $Regex -AllMatches).Matches[0].Value
+    $wvd = Invoke-WebRequest -Uri $uri | ConvertFrom-Json
     $wvd = $wvd.values | ?{$_.Name -like '*virtualDesk*'} | Select id,properties
     $wvdcsvtemp = $wvdcsv = $summary = $summarytemp = New-Object system.collections.arraylist
-    #$csvoutput = "c:\temp\wvd.csv"
     $previousFilepath = $PSBoundParameters['previousFile']
     $compp = $False
 }
