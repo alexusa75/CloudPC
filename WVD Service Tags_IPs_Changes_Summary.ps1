@@ -38,6 +38,7 @@ begin{
     $allcontext = $webrequest.Content
     $Regex = 'https:\/\/download\.microsoft\.com\/download\/7\/1\/D\/.{36}\/ServiceTags_Public_\d.{8}json'
     $uri = (Select-String -InputObject $allcontext -Pattern $Regex -AllMatches).Matches[0].Value
+    #Request the json file
     $wvd = Invoke-WebRequest -Uri $uri | ConvertFrom-Json
     $wvd = $wvd.values | ?{$_.Name -like '*virtualDesk*'} | Select id,properties
     $wvdcsvtemp = $wvdcsv = $summary = $summarytemp = New-Object system.collections.arraylist
