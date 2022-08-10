@@ -124,12 +124,16 @@ end{
 
     If($compp){
         $compareoutput = $csvoutput -replace '(.*\\)(.*)','$1compare.csv'
-        Write-Host $compp -ForegroundColor Yellow
+        #Write-Host $compp -ForegroundColor Yellow
         $diff | Export-Csv -Path $compareoutput -NoTypeInformation
-        Write-Host "`nYou can find the comparation results at:" -ForegroundColor Green -NoNewline
+        Write-Host "`nWe found $($diff.Count) differences, You can find the comparation results at:" -ForegroundColor Green -NoNewline
         Write-Host " $compareoutput" -ForegroundColor Yellow
     }else {
-        Write-Host "`nBoth files are identical `n"
+        IF($compare){
+            Write-Host "`nBoth files are identical `n" -ForegroundColor Yellow
+        }else{
+            Write-Host "`nYou can run the script with the option -compare -previousFile <File path.csv> to compare if there is any new ore removed IP `n" -ForegroundColor Yellow
+        }
     }
 
     $explore = $csvoutput -replace '(.*\\)(.*)','$1'
